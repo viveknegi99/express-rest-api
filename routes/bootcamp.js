@@ -7,6 +7,7 @@ const advanvedResults = require('../middleware/advancedResult');
 
 // include other resource routers
 const coursesRouter = require('./courses');
+const reviewsRouter = require('./reviews');
     
 const router = express.Router();
 
@@ -15,6 +16,7 @@ const {protect, authorize} = require('../middleware/auth');
 
 // re-route into other resource router
 router.use('/:bootcampId/courses', coursesRouter);
+router.use('/:bootcampId/reviews', reviewsRouter);
 
 router.route('/:id/photo')
 .put(protect, authorize('publisher', 'admin'), bootcampPhotoUpload);
